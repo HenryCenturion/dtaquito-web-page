@@ -1,0 +1,99 @@
+<body>
+<section class="ptbm pricingPaid">
+  <div class="container">
+    <div class="row justify-content-center">
+
+      <!-- Free Plan -->
+      <div class="col-xs-12 col-md-4 col-sm-6 animated slideInUp">
+        <div class="panel pricingGrid pricingFree">
+          <div class="panel-heading">
+            <h3>Free</h3>
+          </div>
+          <div class="panel-body">
+            <h2><strong>Features include:</strong></h2>
+            <div class="featureContainer">
+              <div class="featureBlock">
+                <h4>Renter:</h4>
+                <p>Book unlimited sports spaces.</p>
+                <p>No discount on booking.</p>
+              </div>
+              <div class="featureBlock">
+                <h4>Owner:</h4>
+                <p>Contact with support.</p>
+              </div>
+            </div>
+          </div>
+          <div class="panel-footer">
+            <div class="pricingRate">
+              <div class="priceAnnual"><span class="price"><sup>S/</sup>0<small>/for life</small></span></div>
+              <div class="pricingButton"><span class="currentPlan" *ngIf="subscription?.planType === 'free'">Your current plan</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Premium Plan -->
+      <div class="col-xs-12 col-md-4 col-sm-6 animated slideInUp">
+        <div class="panel pricingGrid pricingPremium">
+          <div class="panel-heading premium-heading">
+            <h3>Premium</h3>
+          </div>
+          <div class="panel-body">
+            <h2><strong>Features include:</strong></h2>
+            <div class="featureContainer">
+              <div class="featureBlock">
+                <h4>Renter:</h4>
+                <p>Book unlimited sports spaces.</p>
+                <p>With 50% discount on booking.</p>
+              </div>
+              <div class="featureBlock">
+                <h4>Owner:</h4>
+                <p>Contact with support.</p>
+                <p>Add your sports spaces.</p>
+              </div>
+            </div>
+          </div>
+          <div class="panel-footer">
+            <div class="pricingRate">
+              <div class="priceAnnual"><span class="price"><sup>S/</sup>70<small>/for life</small></span></div>
+              <div class="pricingButton"><button class="btn" *ngIf="subscription?.planType !== 'premium'" (click)="openPaymentModal()">Get Premium</button></div>
+              <div class="pricingButton"><span class="currentPlan" *ngIf="subscription?.planType === 'premium'">Your current plan</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Payment Modal -->
+  <div class="modal" tabindex="-1" role="dialog" [ngClass]="{'show': showModal}" *ngIf="showModal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Choose Payment Method</h5>
+          <button type="button" class="close" (click)="closeModal()" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div *ngIf="payments && payments.length > 0; else noPayment">
+            <select class="form-control" (change)="onPaymentMethodChange($event)">
+              <option disabled selected>Select a payment method</option>
+              <option *ngFor="let payment of payments" [value]="payment.id">{{payment.cardHolder}} - {{payment.cardIssuer}}</option>
+            </select>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" (click)="upgradeToPremium()" [disabled]="!selectedPayment">Confirm</button>
+              <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancel</button>
+            </div>
+          </div>
+          <ng-template #noPayment>
+            <p>No payment methods available. Please add a payment method.</p>
+          </ng-template>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+</body>

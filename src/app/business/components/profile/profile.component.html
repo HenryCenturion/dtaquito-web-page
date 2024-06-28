@@ -1,0 +1,32 @@
+<body>
+<div class="main-container">
+  <div class="profile-container" *ngIf="user">
+    <div class="card">
+      <div class="avatar-holder">
+        <img src="/assets/images/profile-icon.jpg" alt="Profile icon">
+      </div>
+      <div class="name">
+        <p>{{ user.name }}</p>
+      </div>
+      <div *ngIf="!editing" class="profile-info">
+        <button class="edit-button" (click)="editing = true">Edit profile</button>
+      </div>
+      <form *ngIf="editing" class="edit-form" (ngSubmit)="updateUser()">
+        <label for="name">Name: </label>
+        <input id="name" [(ngModel)]="user.name" name="name">
+
+        <label for="email">Email: </label>
+        <input id="email" [(ngModel)]="user.email" name="email">
+
+        <label for="newPassword">New Password: </label>
+        <input id="newPassword" [(ngModel)]="newPassword" name="newPassword" type="password">
+
+        <div class="button-container">
+          <button type="submit">Update</button>
+          <button type="button" (click)="cancelUpdate()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</body>

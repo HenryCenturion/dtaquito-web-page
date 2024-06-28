@@ -1,0 +1,38 @@
+<div class="form-style-3">
+  <form (ngSubmit)="onSubmit()" #sportSpaceForm="ngForm">
+    <fieldset>
+      <label for="name"><span>Name <span class="required"></span></span><input type="text" class="input-field" id="name" name="name" placeholder="Name" [(ngModel)]="name" required /></label>
+
+      <label for="sport"><span>Sport <span class="required"></span></span>
+        <select id="sport" name="sport" class="select-field" [(ngModel)]="sport" required>
+          <option value="" disabled selected>Select Sport</option>
+          <option value="1">Futbol</option>
+          <option value="2">Billar</option>
+        </select>
+      </label>
+
+      <label for="imageUrl"><span>Image URL <span class="required"></span></span><input type="text" class="input-field" id="imageUrl" name="imageUrl" placeholder="Image URL" [(ngModel)]="imageUrl" required /></label>
+
+      <label for="description"><span>Description <span class="required"></span></span><input type="text" class="input-field" id="description" name="description" placeholder="Description" [(ngModel)]="description" required /></label>
+
+      <label for="price"><span>Price <span class="required"></span></span><input type="number" class="input-field" id="price" name="price" placeholder="Price" [(ngModel)]="price" required /></label>
+
+      <label for="district"><span>District <span class="required"></span></span>
+        <select id="district" name="district" class="select-field" [(ngModel)]="district" required>
+          <option value="" disabled selected>Select District</option>
+          <option value="Miraflores">Miraflores</option>
+          <option value="San Isidro">San Isidro</option>
+          <option value="Surco">Surco</option>
+          <option value="Barranco">Barranco</option>
+          <option value="Sanborja">San Borja</option>
+        </select>
+      </label>
+
+      <label for="startTime"><span>Open Time <span class="required"></span></span><input type="time" class="input-field" id="startTime" name="startTime" placeholder="Open time" [(ngModel)]="startTime" required /></label>
+
+      <label for="endTime"><span>Close Time <span class="required"></span></span><input type="time" class="input-field" id="endTime" name="endTime" placeholder="Close time" [(ngModel)]="endTime" required /></label>
+
+      <label><span> </span><input type="submit" value="Create" [disabled]="!sportSpaceForm.valid" /></label>
+    </fieldset>
+  </form>
+</div>

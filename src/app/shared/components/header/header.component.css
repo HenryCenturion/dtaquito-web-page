@@ -1,0 +1,154 @@
+* {
+  box-sizing: border-box;
+  font-weight: bold;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #f6f6f6;
+  border-bottom: 1px solid #ddd;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 1.5em;
+  margin: 0;
+  color: #054A29;
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+}
+
+.row a {
+  text-decoration: none;
+  color: green;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.row a:hover,
+.row a:active {
+  color: white;
+  background-color: #5BBA6F;
+}
+
+.row a.active {
+  color: white;
+  background-color: #054A29;
+}
+
+.gap-1 {
+  gap: 10px;
+}
+
+.user-menu {
+  position: relative;
+}
+
+.menu-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  color: green;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.menu-button:hover,
+.menu-button:active {
+  color: white;
+  background-color: #5BBA6F;
+}
+
+.menu-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: white;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  min-width: 150px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.menu-content a {
+  display: block;
+  padding: 10px 15px;
+  text-decoration: none;
+  color: #333;
+  border-bottom: 1px solid #ddd;
+}
+
+.menu-content a:last-child {
+  border-bottom: none;
+}
+
+.menu-content a:hover {
+  background-color: #054A29;
+}
+
+.menu-content.show {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+  }
+
+  .title {
+    margin-bottom: 10px;
+    font-size: 1.2em;
+  }
+
+  .row {
+    flex-direction: row; /* Cambia a row para mantener los elementos en una línea */
+    flex-wrap: nowrap; /* Añade esto para evitar que los elementos se envuelvan */
+    align-items: center; /* Añade esto para alinear los elementos verticalmente */
+    overflow-x: auto; /* Añade esto para permitir el desplazamiento si los elementos se desbordan */
+    width: 100%;
+  }
+
+  .row a {
+    width: auto; /* Cambia a auto para permitir que los elementos se ajusten a su contenido */
+    text-align: center; /* Cambia a center para centrar el texto */
+    padding: 8px 10px;
+  }
+  .user-menu {
+    position: static; /* Cambia a static para que el menú no se posicione absolutamente */
+  }
+
+  .menu-content {
+    position: relative; /* Cambia a relative para que el menú se posicione en relación con .user-menu */
+    z-index: 1000; /* Aumenta el z-index para asegurarte de que el menú se muestre por encima de otros elementos */
+    width: 100%; /* Ajusta el ancho al 100% para que el menú se ajuste al ancho del contenedor */
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    padding: 5px;
+  }
+
+  .title {
+    font-size: 1em;
+  }
+
+  .row a {
+    font-size: 0.9em;
+    padding: 6px 8px;
+  }
+}

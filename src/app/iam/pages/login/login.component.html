@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<body>
+<div class="container">
+  <div class="wrapper">
+    <div class="title">Login</div>
+    <form (ngSubmit)="onSubmit()">
+      <div class="row">
+        <i class="fas fa-envelope"></i>
+        <input type="text" [(ngModel)]="email" name="email" placeholder="Email" required>
+      </div>
+      <div class="row">
+        <i class="fas fa-lock"></i>
+        <input type="password" [(ngModel)]="password" name="password" placeholder="Password" required>
+      </div>
+      <div class="row button">
+        <input type="submit" value="Login">
+      </div>
+      <p *ngIf="errorMessage" class="error-message">{{errorMessage}}</p>
+      <div class="signup-link">
+        Don't have an account? <a class="register-link" routerLink="/register">Register</a>
+      </div>
+    </form>
+  </div>
+</div>
+</body>

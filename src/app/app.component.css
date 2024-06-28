@@ -1,0 +1,27 @@
+/* Asegúrate de que el cuerpo y html ocupen el 100% de la altura */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Flexbox en el contenedor principal */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Cambiado de min-height: 100vh a height: 100% */
+
+}
+
+/* El contenido principal debe expandirse para llenar el espacio disponible */
+.content {
+  flex: 1;
+}
+
+/* Estilos para el pie de página */
+footer {
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+}

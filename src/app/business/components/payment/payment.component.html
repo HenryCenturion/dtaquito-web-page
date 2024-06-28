@@ -1,0 +1,100 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<body>
+<div class="row" *ngIf="payment as paymentData; else paymentForm">
+  <div class="container">
+    <h4>Payment Details</h4>
+    <div class="input-group input-group-icon">
+      <input type="text" placeholder="Card Holder" value="{{paymentData.cardHolder}}" readonly>
+      <div class="input-icon">
+        <i class="fa fa-user"></i>
+      </div>
+    </div>
+    <div class="input-group input-group-icon">
+      <input type="text" placeholder="Card Number" value="{{paymentData.cardNumber}}" readonly>
+      <div class="input-icon">
+        <i class="fa fa-credit-card"></i>
+      </div>
+    </div>
+    <div class="col-half">
+      <div class="input-group input-group-icon">
+        <input type="text" placeholder="Card Issuer" value="{{paymentData.cardIssuer}}" readonly>
+        <div class="input-icon">
+          <i class="fa fa-building"></i>
+        </div>
+      </div>
+    </div>
+    <div class="col-half">
+      <div class="input-group">
+        <select disabled>
+          <option>{{paymentData.expirationDate | date:'MM/yyyy'}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="button-container">
+      <button type="button" (click)="deletePayment()">Delete payment method</button>
+    </div>
+  </div>
+</div>
+
+<ng-template #paymentForm>
+  <div class="container">
+    <div class="row">
+      <h4>Add a payment method</h4>
+      <form (ngSubmit)="createPayment(paymentForm.value)" #paymentForm="ngForm">
+        <div class="input-group input-group-icon">
+          <input type="text" id="cardHolder" name="cardHolder" ngModel required placeholder="Card Holder">
+          <div class="input-icon">
+            <i class="fa fa-user"></i>
+          </div>
+        </div>
+        <div class="input-group input-group-icon">
+          <input type="text" id="cardNumber" name="cardNumber" ngModel required (keypress)="numericOnly($event)"
+                 maxlength="16" placeholder="Card Number">
+          <div class="input-icon">
+            <i class="fa fa-credit-card"></i>
+          </div>
+          <div *ngIf="cardNumberError" class="error">{{cardNumberError}}</div>
+        </div>
+        <div class="col-half">
+          <div class="input-group input-group-icon">
+            <input type="text" id="cvv" name="cvv" ngModel required (keypress)="numericOnly($event)" maxlength="3"
+                   placeholder="CVV">
+            <div class="input-icon">
+              <i class="fa fa-lock"></i>
+            </div>
+            <div *ngIf="cvvError" class="error">{{cvvError}}</div>
+          </div>
+        </div>
+        <div class="col-half">
+          <div class="input-group">
+            <input type="month" id="expirationDate" name="expirationDate" ngModel required>
+            <div *ngIf="expirationDateError" class="error">{{expirationDateError}}</div>
+          </div>
+        </div>
+        <div class="button-container">
+          <button type="submit" [disabled]="!paymentForm.form.valid">Add payment method</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</ng-template>
+
+<div id="success-popup" class="popup" *ngIf="showPopup" [ngClass]="{'show-popup': showPopup}">
+  <div class="popup-content">
+    <i class="fa fa-check-circle check-icon"></i>
+    <p>Payment Method Added Successfully!</p>
+  </div>
+</div>
+
+<div id="confirm-delete-popup" class="popup" *ngIf="showDeletePopup" [ngClass]="{'show-delete-popup': showDeletePopup}">
+  <div class="popup-content">
+    <p>Are you sure you want to delete this payment method?</p>
+    <div class="button-container">
+      <button type="button" (click)="confirmDelete(true)">Yes</button>
+      <button type="button" (click)="confirmDelete(false)">No</button>
+    </div>
+  </div>
+</div>
+
+</body>

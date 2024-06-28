@@ -1,0 +1,35 @@
+<div class="reservations-table">
+  <h2 class="table-title">My Reservations</h2>
+
+  <table class="table table-hover" *ngIf="reservations.length > 0; else noReservations">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Fecha y Hora</th>
+      <th>Horas</th>
+      <th>Nombre del Espacio Deportivo</th>
+      <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let reservation of reservations">
+      <td data-label="ID">{{ reservation.id }}</td>
+      <td data-label="Fecha y Hora">{{ reservation.time | date:'dd/MM/yyyy, hh:mm a':'UTC' }}</td>
+      <td data-label="Horas">{{ reservation.hours }}</td>
+      <td data-label="Nombre del Espacio Deportivo">{{ reservation.sportSpaces.name }}</td>
+      <td data-label="Acciones">
+        <button (click)="cancelReservation(reservation.id)" class="btn btn-danger btn-sm">
+          <i class="bi bi-trash"></i>
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <ng-template #noReservations>
+    <p class="text-center">No tienes ninguna reserva.</p>
+  </ng-template>
+</div>
+
+<!-- Bootstrap Icons CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.7.2/font/bootstrap-icons.min.css">

@@ -1,0 +1,43 @@
+{
+  "users": [
+    {
+      "name": "henry",
+      "email": "henry@gmail.com",
+      "password": "123",
+      "role": "R",
+      "id": 1
+    }
+  ],
+  "sport-spaces": [
+    {
+      "name": "Canchita 1",
+      "imageUrl": "https://i.pinimg.com/736x/1f/32/31/1f3231213a41a42089ffd90365ddcc59.jpg",
+      "description": "Bonita cancha",
+      "price": 5,
+      "startTime": "07:38",
+      "endTime": "07:37",
+      "userId": 2,
+      "id": 1
+    }
+  ],
+  "reservations": [],
+  "subscriptions": [
+    {
+      "plan": "free",
+      "id": 1,
+      "userId": 1
+    }
+  ],
+  "payments": [
+    {
+      "cardNumber": "123",
+      "expirationDate": "2024-06-12",
+      "cardHolder": "123",
+      "cardIssuer": "123",
+      "cvv": "123",
+      "balance": 1000,
+      "userId": 1,
+      "id": 1
+    }
+  ]
+}

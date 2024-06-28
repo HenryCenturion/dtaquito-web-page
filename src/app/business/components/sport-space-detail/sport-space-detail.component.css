@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+@import url('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css');
+
+.detail-page {
+  font-family: 'Poppins', sans-serif;
+  background-image: url('/assets/images/details.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column; /* Cambio a columna en dimensiones pequeñas */
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.details-container h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.details-container,
+.reservation-container {
+  background-color: rgba(256, 256, 235, 0.90);
+  border: 2px solid #ddd;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  box-sizing: border-box;
+  width: 100%;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  backdrop-filter: blur(10px);
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.space-image {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 20px; /* Bordes más redondeados */
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para la imagen */
+}
+
+.details-container p {
+  text-align: center;
+  font-size: 17px;
+  margin-top: 10px;
+}
+
+.reservation-section {
+  width: 100%;
+}
+
+.reservation-section h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 40px;
+  border: 2px solid #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  z-index: 1000;
+  width: 80%;
+  max-width: 500px;
+  font-size: 20px;
+}
+
+.popup p {
+  margin: 0;
+  padding: 0;
+  font-size: 24px;
+}
+
+@media (min-width: 768px) {
+  .detail-page {
+    flex-direction: row; /* Vuelve a distribución en fila en pantallas más grandes */
+    justify-content: center;
+  }
+
+  .details-container,
+  .reservation-container {
+    width: 45%; /* Ancho original para contenedores en pantallas más grandes */
+    margin-bottom: 0; /* Elimina el espacio entre contenedores en pantallas más grandes */
+  }
+}

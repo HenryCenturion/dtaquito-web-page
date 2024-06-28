@@ -1,0 +1,40 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  background-color: #f8f8f8;
+  padding: 20px;
+}
+
+.section h1 {
+  font-size: 2.5em;
+  margin: 10px 0;
+  color: black;
+}
+
+.section h4 {
+  font-size: 1.5em;
+  margin: 10px 0;
+  color: darkslategrey;
+}
+
+.section button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1em;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  background-color: #054A29;
+}
+
+.section button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}

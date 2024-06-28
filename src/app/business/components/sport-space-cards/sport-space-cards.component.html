@@ -1,0 +1,18 @@
+<div class="background-image-container">
+  <h1><span>S</span><span>P</span><span>O</span><span>R</span><span>T</span><span> </span><span>S</span><span>P</span><span>A</span><span>C</span><span>E</span><span>S</span></h1>
+
+  <button class="add-sport-space-button" (click)="openCreateSportSpaceDialog()" *ngIf="loggedUser && dataOwner">Add Sport Space</button>
+
+  <div class="card-container">
+    <mat-card *ngFor="let sportSpace of sportSpaces" (click)="goToDetail(sportSpace)">
+      <div class="card-manager">
+        <img [src]="sportSpace.imageUrl" alt="Space photo" width="200">
+        <mat-card-content> Name: {{ sportSpace.name }} </mat-card-content>
+        <mat-card-content> Price: S/ {{ sportSpace.price }} </mat-card-content>
+        <mat-card-content> District: {{ sportSpace.district }} </mat-card-content>
+        <mat-card-content> Schedule: {{sportSpace.StartTime}} - {{sportSpace.endTime}} </mat-card-content>
+      </div>
+      <button *ngIf="loggedUser && dataOwner" (click)="deleteSportSpace(sportSpace.id, $event)">Delete</button>
+    </mat-card>
+  </div>
+</div>

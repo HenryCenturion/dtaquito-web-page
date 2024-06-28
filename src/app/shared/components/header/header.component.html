@@ -1,0 +1,20 @@
+<header (document:click)="onDocumentClick($event)">
+  <p class="title">D'Taquito</p>
+  <div class="row gap-1">
+    <a routerLink="/home" routerLinkActive="active">Home</a>
+    <a routerLink="/sport-spaces" routerLinkActive="active">Sport Spaces</a>
+    <a routerLink="/about-us" routerLinkActive="active">About</a>
+    <a routerLink="/login" *ngIf="!isLoggedIn">Login</a>
+
+    <div *ngIf="isLoggedIn" class="user-menu" #menu>
+      <button class="menu-button" (click)="toggleMenu(); $event.stopPropagation()">My Account</button>
+      <div class="menu-content" [class.show]="menuOpen">
+        <a routerLink="/profile" (click)="toggleMenu()">Profile</a>
+        <a routerLink="/reservations" *ngIf="loggedUser && dataOwner" (click)="toggleMenu()">My Reservations</a>
+        <a routerLink="/payments" (click)="toggleMenu()">Payment</a>
+        <a routerLink="/subscriptions" (click)="toggleMenu()">Subscription</a>
+        <a (click)="logout(); toggleMenu()">Logout</a>
+      </div>
+    </div>
+  </div>
+</header>

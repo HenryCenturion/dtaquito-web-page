@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+@import url('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css');
+
+/* Estilos para el contenedor de la tabla */
+.reservations-table {
+  max-width: 800px;
+  margin: 0 auto; /* Centra el contenido horizontalmente */
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco con transparencia */
+  border: 2px solid #ddd;
+  border-radius: 20px; /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+  padding: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  backdrop-filter: blur(10px); /* Efecto de desenfoque */
+}
+
+/* Estilos para el título de la tabla */
+.table-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Estilos para la tabla */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th, table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+table th {
+  background-color: #3A7D44; /* Color de fondo del encabezado */
+  color: #fff; /* Color del texto del encabezado */
+}
+
+table tbody tr {
+  background-color: #fff; /* Fondo blanco para las filas */
+}
+
+/* Estilos para el mensaje de "No tienes ninguna reserva" */
+p {
+  font-size: 18px;
+  color: #666;
+  text-align: center;
+  margin-top: 20px;
+}
+
+button {
+  border-radius: 5px; /* Bordes redondeados */
+  background-color: #BA3B46; /* Color de fondo original */
+  color: #fff; /* Color de texto blanco */
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Transición suave del color de fondo */
+}
+
+button:hover {
+  background-color: #c9302c; /* Color de fondo al pasar el cursor */
+}
+
+/* Estilos responsive para pantallas pequeñas */
+@media (max-width: 768px) {
+  thead {
+    display: none;
+  }
+
+  tbody td {
+    display: block;
+    text-align: right;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  tbody td::before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+  }
+
+  tbody td:last-child {
+    border-bottom: 0;
+  }
+
+  tbody tr {
+    margin-bottom: 10px;
+    border-bottom: 2px solid #ddd;
+  }
+}
