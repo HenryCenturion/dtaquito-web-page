@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
 *{
   margin: 0;
   padding: 0;
@@ -36,7 +36,7 @@ body{
   border-radius: 5px 5px 0 0;
   color: #fff;
   font-size: 30px;
-  font-weight: 600;
+  font-weight: 700;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -93,7 +93,7 @@ form .row input::placeholder{
 .wrapper form .button input{
   color: #fff;
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 700;
   padding-left: 0px;
   background: #254D32;
   border: 1px solid #16a085;
