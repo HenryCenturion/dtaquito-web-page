@@ -14,6 +14,8 @@ export class SportSpacesService {
   subscriptionId: any;
   baseUrl = environment.baseUrl;
   loggedUser = JSON.parse(localStorage.getItem('loggedUser') || '{}');
+  protected userData: any | undefined;
+  dataOwner = false;
 
   constructor(private authService: AuthService, private http:HttpClient, private subscriptionsService: SubscriptionsService, private usersService: UsersService) {
     if(this.authService.checkLoginStatus()) {
@@ -26,14 +28,16 @@ export class SportSpacesService {
   getAllSportSpaces(): Observable<SportSpace[]> {
     let loggedUser = JSON.parse(localStorage.getItem('loggedUser') || '{}');
     const userId = loggedUser.id;
-    const roleType = loggedUser.roleType;
+    this.getThatUser();
+
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
         'Authorization': 'Bearer ' + localStorage.getItem('token')
       })
     };
-    if (roleType === 'P' && userId) {
+    if (this.dataOwner && userId) {
+      console.log(userId);
       return this.http.get<SportSpace[]>(`${this.baseUrl}/sport-spaces?userId=${userId}`, httpOptions);
     } else {
       return this.http.get<SportSpace[]>(this.baseUrl + '/sport-spaces', httpOptions);
@@ -97,5 +101,23 @@ export class SportSpacesService {
       })
     };
     return this.http.put(`${this.baseUrl}/sport-spaces/${id}`, sportSpace, httpOptions);
+  }
+
+  getThatUser(){
+    this.usersService.getUserById(this.loggedUser.id).subscribe(
+      (data: any) => {
+        this.userData = data;
+        if(this.userData.roleType === 'P'){
+          this.dataOwner = true;
+        }
+      },
+      (error) => {
+        if (error.status === 401) {
+          console.error('No autorizado. El usuario no está logueado o el token es inválido.');
+        } else {
+          console.error('Error al obtener el usuario:', error);
+        }
+      }
+    );
   }
 }
